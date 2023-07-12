@@ -9,38 +9,12 @@ import re
 calc1 = 0.0
 calc2 = 0.0
 operation = ""
-
 operators = ["+","-","*","/"]
 
-def raw_input():
-    value = input()
-    #if re.match(r'^[A-z]+', value):
+def main():
+    math_input()
 
-    if value.isalpha():
-        return "q"
-    elif value.isdigit():
-        return float(value)
-    elif value in operators:
-        return value
-    else: 
-        return "q"
-
-while (calc1 != "q" and calc2 != "q"):
-
-    print("\nWhat is the first operator? Or, enter q to quit: ", end="")
-    calc1 = raw_input()
-    if calc1 == "q":
-        print(f"Exiting ..\n")
-        break
-
-    print("\nWhat is the second operator? Or, enter q to quit: ", end="")
-    calc2 = raw_input()
-    if calc2 == "q":
-        print(f"Exiting ..\n")
-        break
-
-    print(f"Enter an operation to perform on the two operators {operators}: ", end="")
-    operation = raw_input()
+def arithmath(calc1,operation,calc2):
 
     if operation == '+':
         total = calc1 + calc2
@@ -56,4 +30,43 @@ while (calc1 != "q" and calc2 != "q"):
         print(f"\n {str(calc1)}  {operation}  {str(calc2)}  = {total}")
     else:
         print("\n Not a valid entry. Restarting...")
+
+def raw_input():
+    value = input()
+    #if re.match(r'^[A-z]+', value):
+
+    if value.isalpha():
+        return "q"
+    elif value.isdigit():
+        return float(value)
+    elif value in operators:
+        return value
+    else: 
+        return "q"
+
+#def math_input():
+
+while (calc1 != "q" and calc2 != "q"):
+
+            print("\nWhat is the first operator? Or, enter q to quit: ", end="")
+            calc1 = raw_input()
+            if calc1 == "q":
+                print(f"Exiting ..\n")
+                break
+     
+            print("\nWhat is the second operator? Or, enter q to quit: ", end="")
+            calc2 = raw_input()
+            if calc2 == "q":
+                print(f"Exiting ..\n")
+                break
+    
+            print(f"Enter an operation to perform on the two operators {operators}: ", end="")
+            operation = raw_input()
+
+            if operation in operators and calc1 != "q" and calc2 != "q":
+                    arithmath(float(calc1),str(operation),float(calc2))
+
+""" Script starts here"""
+
+#main()
 

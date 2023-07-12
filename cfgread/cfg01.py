@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 '''RZFeeser | Alta3 Research
 
 Learning to read in files. This lab uses the following methods:
@@ -30,7 +31,6 @@ def main():
     # or the start of the file 
     configfile.seek(0, 0)
 
-    
     ########## EXPLORE READLINES ##########
     ## make a list of file lines - .readlines()
     configlist = configfile.readlines()

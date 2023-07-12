@@ -1,19 +1,13 @@
 #!/usr/bin/env python3
 
-import re
-
 # A program that prompts a user for two operators and operation (plus or minus)
 # the program then shows the result.
 # The user may enter q to exit the program.
 
-min=3
 calc1 = 0.0
 calc2 = 0.0
 operation = ""
 operators = ["+","-","*","/"]
-
-def main():
-    math_input()
 
 def arithmath(calc1,operation,calc2):
 
@@ -34,7 +28,6 @@ def arithmath(calc1,operation,calc2):
 
 def raw_input():
     value = input()
-    #if re.match(r'^[A-z]+', value):
 
     if value.isalpha():
         return "q"
@@ -45,9 +38,8 @@ def raw_input():
     else: 
         return "q"
 
-#def math_input():
-
-while (calc1 != "q" and calc2 != "q"):
+def main():
+    while (calc1 != "q" and calc2 != "q"):
 
             print("\nWhat is the first operator? Or, enter q to quit: ", end="")
             calc1 = raw_input()
@@ -64,10 +56,11 @@ while (calc1 != "q" and calc2 != "q"):
             print(f"Enter an operation to perform on the two operators {operators}: ", end="")
             operation = raw_input()
 
-            if operation in operators and calc1 != "q" and calc2 != "q" and min >= 3:
+            if operation in operators and calc1 != "q" and calc2 != "q":
                     arithmath(float(calc1),str(operation),float(calc2))
 
 """ Script starts here"""
 
-#main()
+if __name__ == "__main__":
+    main()
 

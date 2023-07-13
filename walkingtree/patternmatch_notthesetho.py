@@ -4,25 +4,38 @@
 
 """Script to search for a pattern match"""
 
-import os # used to walk the system
-import fnmatch # for regex pattern matching
+# used to walk the system
+import os 
+
+# for regex pattern matching
+import fnmatch 
 
 EXCLUDE = ["/usr", "/home", "/var"] ## Don't search in these locations
 
 def find(pattern, path):
 
     """search through filesystem based on given path location"""
-    result = []
 
+    result = []
     for root, dirs, files in os.walk(path, topdown=True):
 
-        if root in EXCLUDE: # if the root matches the exclude list
-            dirs[:] = [] # remove the directory list for this iteration
-            files[:] = [] # remove the file list for this iteration
+        # if the root matches the exclude list
+        if root in EXCLUDE: 
 
-        for name in files: # always perform the nested loop, but it maybe empty
-            if fnmatch.fnmatch(name, pattern): # if match
-                result.append(os.path.join(root, name)) # add to our list
+            # remove the directory list for this iteration
+            dirs[:] = [] 
+
+            # remove the file list for this iteration
+            files[:] = [] 
+
+        # always perform the nested loop, but it maybe empty
+        for name in files: 
+
+            # if match
+            if fnmatch.fnmatch(name, pattern): 
+
+                # add to our list
+                result.append(os.path.join(root, name)) 
 
     return result # return the list
 
@@ -32,7 +45,9 @@ def main():
 
     lookfor = input("What pattern am I looking for (Example: *.txt or *.cfg) ")
     lookwhere = input("What is the path in which I should search? ")
-    print("Results: ", find(lookfor, lookwhere)) # call function
+
+    # call function
+    print("Results: ", find(lookfor, lookwhere)) 
 
 main()
 

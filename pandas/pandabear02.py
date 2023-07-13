@@ -14,21 +14,24 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 def main():
+
     # define the name of our xls file
     excel_file = 'movies.xls'
 
     # Choose the first column "Title" as
     # index (index=0)
     movies_sheet1 = pd.read_excel(excel_file, sheet_name=0, index_col=0)
+
     # DF has 5 rows and 24 columns (indexed by title)
     print(movies_sheet1.head())
 
     # grab the next 2 sheets as well
     movies_sheet2 = pd.read_excel(excel_file, sheet_name=1, index_col=0)
+
     # DF has 5 rows and 24 columns (indexed by title)
     print(movies_sheet2.head())
-
     movies_sheet3 = pd.read_excel(excel_file, sheet_name=2, index_col=0)
+
     # DF has 5 rows and 24 columns (indexed by title)
     print(movies_sheet3.head())
 
@@ -56,6 +59,7 @@ def main():
 
     # create a stacked bar graph
     sorted_by_gross['Gross Earnings'].head(10).plot(kind="barh")
+
     # save the figure as stackedbar.png
     plt.savefig("/home/student/static/stackedbar.png", bbox_inches='tight')
 

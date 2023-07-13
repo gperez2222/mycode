@@ -13,27 +13,35 @@ def main():
     # create a DataFrame (DF) object. EASY!
     # because we did not specify a sheet
     # only the first sheet was read into the DF
+    #
     movies = pd.read_excel(excel_file)
 
     # show the first five rows of our DF
-    # DF has 5 rows and 25 columns (indexed by integer)
+    # DF has 5 rows and 25 columns (indexed by integer) 
+    # I can and the num of lines as an arg movies.head(30)
     print(movies.head())
 
     # Choose the first column "Title" as
     # index (index=0)
+    # read in the sheet name 0
+    #
     movies_sheet1 = pd.read_excel(excel_file, sheet_name=0, index_col=0)
 
     # DF has 5 rows and 24 columns (indexed by title)
     # print the top 10 movies in the dataframe
+    #
     print(movies_sheet1.head())
 
-    # export 5 movies from the top dataframe to excel
+    # export 5 movies from the top dataframe to a new excel file
+    #
     movies_sheet1.head(5).to_excel("5movies.xlsx")
 
     # export 5 movies from the top of the dataframe to json
+    #
     movies_sheet1.head(5).to_json("5movies.json")
 
     # export 5 movies from the top of the dataframe to csv
+    #
     movies_sheet1.head(5).to_csv("5movies.csv")
 
 

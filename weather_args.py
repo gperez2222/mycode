@@ -20,7 +20,7 @@ default_city_name = "Cliffside Park"
 
 ########################################################
 
-def myfunc(argv):
+def cityArgs(argv):
 
     city_name = ""
 
@@ -39,11 +39,8 @@ def myfunc(argv):
         elif opt in ("-c", "--city"):
             city_name = arg
 
-    #print(f"CITY: {city_name}")
-    #print(f"len: {len(city_name)}")
-
     if len(city_name) == 0:
-        # Give city name
+        # if there were no arguemts passwd for the city name then prompt for input
         city_name = input("Enter City Name or \"q\" for quit, for ex: [ Cliffside Park (def)]:  ")
 
         if "q" in city_name:
@@ -59,13 +56,11 @@ def myfunc(argv):
 
 def main():
 
-    city_name = myfunc(sys.argv)
+    city_name = cityArgs(sys.argv)
 
     # compose the complete_url variable 
     #complete_url = base_url + "appid=" + api_key + "&q=" + city_name
     complete_url = f"{base_url}appid={api_key}&q={city_name}&units=imperial"
-    
-    #print(f"\nSearching weather for \"{city_name}\" using URL:{complete_url}\n")
     
     # get method of requests module and return response object
     response = requests.get(complete_url)

@@ -2,9 +2,6 @@
 
 # import required modules
 
-import sys
-import getopt
-
 import requests, json
 
 from pprint import pprint
@@ -18,54 +15,30 @@ base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
 default_city_name = "Cliffside Park"
 
-########################################################
-
-def cityArgs(argv):
-
-    city_name = ""
-
-    arg_help = "{0} -h -c <city name>".format(argv[0])
-
-    try:
-        opts, args = getopt.getopt(argv[1:], "hc:", ["help", "city="])
-    except:
-        print(arg_help)
-        sys.exit(2)
-
-    for opt, arg in opts:
-        if opt in ("-h", "--help"):
-            print(arg_help)  # print the help message
-            sys.exit(2)
-        elif opt in ("-c", "--city"):
-            city_name = arg
-
-    if len(city_name) == 0:
-        # if there were no arguemts passwd for the city name then prompt for input
-        city_name = input("Enter City Name or \"q\" for quit, for ex: [ Cliffside Park (def)]:  ")
-
-        if "q" in city_name:
-            print(f"Exiting")
-            exit()
-    
-        if len(city_name) == 0:
-            city_name = default_city_name
-
-    return(city_name)
-
-########################################################
-
 def main():
+    # Give city name
+    city_name = input("Enter City Name or \"q\" for quit, for ex: [ Cliffside Park (def)]:  ")
 
-    city_name = cityArgs(sys.argv)
-
+    if "q" in city_name:
+        print(f"Exiting")
+        exit()
+    
+    if len(city_name) == 0:
+        city_name = default_city_name
+    
     # compose the complete_url variable 
     #complete_url = base_url + "appid=" + api_key + "&q=" + city_name
     complete_url = f"{base_url}appid={api_key}&q={city_name}&units=imperial"
     
-    # get method of requests module and return response object
+    #print(f"\nSearching weather for \"{city_name}\" using URL:{complete_url}\n")
+    
+    # get method of requests module
+    # return response object
     response = requests.get(complete_url)
     
-    # json method of response object and convert json format data into python format data
+    # json method of response object
+    # convert json format data into
+    # python format data
     json_output = response.json()
 
     ##pprint(json_output)
@@ -84,7 +57,7 @@ def main():
     
 	    # store the value corresponding
 	    # to the "pressure" key of mainpage
-        #current_pressure = mainpage["pressure"]
+        current_pressure = mainpage["pressure"]
 
 	    # store the value corresponding
 	    # to the "humidity" key of mainpage

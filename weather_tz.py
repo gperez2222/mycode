@@ -154,7 +154,7 @@ def main():
         current_city_time=(find_time(timezone))
 
         # print following values
-        print(f"{current_city_time} - {city_name} - {crayons.blue(weather_description)} - Temp: {crayons.red(current_temperature)} Far - Hum: {current_humidity}%")
+        print(f"{current_city_time} - {city_name} - {crayons.blue(weather_description)} - Temp: {crayons.red(current_temperature)} F - Hum: {current_humidity}%")
 
     else:
         print(f" {city_name} Not Found ")
